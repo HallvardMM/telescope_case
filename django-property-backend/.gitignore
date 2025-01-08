@@ -1,0 +1,96 @@
+# General
+*.DS_Store
+*.log
+*.pot
+*.pyc
+*.pyo
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*.orig
+*.rej
+*.so
+*.class
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+
+# Virtual environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+
+# Django
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static/
+local_settings.py
+
+# Migrations
+**/migrations/__pycache__/
+**/migrations/*.pyc
+**/migrations/*.pyo
+**/migrations/*.log
+**/migrations/*.py
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Logs and debug
+*.log
+debug.log
+
+# Coverage reports
+htmlcov/
+*.cover
+*.coverage
+.cache
+coverage.xml
+
+# Testing
+.tox/
+.pytest_cache/
+coverage/
+
+# Deployment
+*.env
+*.secret
+*.lock
+node_modules/
+build/
+dist/
+
+# Docker
+*.env
+*.pid
+**/docker-compose.override.yml
+*.tmp
+
+# Security
+.env.*
+*.key
