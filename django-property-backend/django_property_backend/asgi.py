@@ -1,5 +1,5 @@
 """
-ASGI config for property_app project.
+ASGI config for django_property_backend project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'property_app.settings')
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "django_property_backend.settings")
 
 application = get_asgi_application()
