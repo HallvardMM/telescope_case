@@ -1,40 +1,65 @@
-# Welcome to Remix!
+# Remix Frontend Application
 
-- 📖 [Remix docs](https://remix.run/docs)
+This is a Remix application designed as a frontend for managing portfolios, properties, and users. The application utilizes Tailwind CSS and shadcn for styling, along with React-Leaflet for map-based functionalities. It is structured to support features like creating properties, displaying them in lists or maps, and interacting with backend APIs.
 
-## Development
+## Getting Started
 
-Run the dev server:
+### Prerequisites
 
-```shellscript
+- Node.js (>= 16.x)
+- npm (>= 7.x)
+- A running backend
+
+### Run project
+
+```bash
+npm install
+```
+
+```bash
 npm run dev
 ```
 
-## Deployment
+## Project structure
 
-First, build your app for production:
-
-```sh
-npm run build
+```bash
+├── app/
+│   ├── components/        # Reusable components for UI and icons
+│   │   ├── icons/         # Icon components
+│   │   │   └── map.tsx
+│   │   └── ui/            # shadcn-based reusable UI components
+│   │       ├── button.tsx
+│   │       ├── switch.tsx
+│   │       ├── toast.tsx
+│   │       └── toaster.tsx
+│   ├── hooks/             # Custom React hooks
+│   │   └── use-toast.ts   # Toast notification hook
+│   ├── lib/               # Utility functions
+│   │   └── utils.ts
+│   ├── routes/            # Route components and layouts
+│   │   ├── user.$id/      # User-related routes
+│   │   ├── user.$userId.portfolio.$id/
+│   │   │   ├── propertyList.tsx
+│   │   │   ├── propertyMap.client.tsx
+│   │   │   └── route.tsx  # Portfolio details page
+│   │   ├── user.$userId.portfolio.$portfolioId.create-property/
+│   │   │   ├── kartverketApi.ts
+│   │   │   ├── mapSelector.client.tsx
+│   │   │   └── route.tsx  # Property creation page
+│   │   ├── user.$userId.portfolio.$portfolioId.property.$id/
+│   │   │   └── route.tsx  # Property details page
+│   │   └── _index/
+│   │       └── route.tsx  # Home page
+│   ├── styles/            # Global styles
+│   │   └── global.css
+│   ├── types/             # TypeScript types for the app
+│   │   ├── portfolio.ts
+│   │   ├── property.ts
+│   │   └── user.ts
+│   ├── utils/             # API interaction utilities
+│   │   └── api.ts
+│   ├── entry.client.tsx   # Remix client entry
+│   ├── entry.server.tsx   # Remix server entry
+│   ├── root.tsx           # Root component
+│   └── tailwind.css       # Tailwind CSS styles
 ```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
