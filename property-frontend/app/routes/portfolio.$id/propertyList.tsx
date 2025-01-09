@@ -31,12 +31,12 @@ export const PropertyList = ({ filteredProperties }: PropertyListProps) => {
             key={property.id}
             className="block border p-4 rounded-lg shadow hover:shadow-lg hover:bg-gray-100 transition"
           >
-            <Link to={`/property/${property.id}`} className="flex">
+            <Link to={`property/${property.id}`} className="flex">
               <div>
                 <h3 className="text-lg font-bold">{property.name}</h3>
                 <p className="text-gray-600">
                   Total Financial Risk:{" "}
-                  {property.total_financial_risk.toLocaleString()} NOK
+                  {property.total_financial_risk} NOK
                 </p>
                 <p className="text-gray-600">
                   Risks: {property.handled_risks}/{property.relevant_risks}

@@ -1,4 +1,6 @@
+import { Link } from "@remix-run/react";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { Button } from "~/components/ui/button";
 import { Property } from "~/types/property";
 
 interface PropertyMapProps {
@@ -31,6 +33,11 @@ export const PropertyMap = ({ properties }: PropertyMapProps) => {
             <p>
               Risks: {property.handled_risks}/{property.relevant_risks}
             </p>
+            <Button asChild>
+            <Link to={`property/${property.id}`}>
+                See building
+            </Link>
+            </Button>
           </Popup>
         </Marker>
       ))}

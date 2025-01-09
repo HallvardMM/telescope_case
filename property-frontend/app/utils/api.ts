@@ -35,3 +35,11 @@ export const createPortfolio = async (
   const response = await api.post<Portfolio>("portfolios/", data);
   return response.data;
 };
+
+export const deleteProperty = async (propertyId: number) => {
+  await axios.delete(`${BASE_URL}properties/${propertyId}/`);
+};
+
+export const deletePortfolio = async (portfolioId: number) => {
+  await axios.delete(`${BASE_URL}portfolios/${portfolioId}/`);
+};
