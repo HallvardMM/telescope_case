@@ -43,3 +43,17 @@ export const deleteProperty = async (propertyId: number) => {
 export const deletePortfolio = async (portfolioId: number) => {
   await axios.delete(`${BASE_URL}portfolios/${portfolioId}/`);
 };
+
+export const createProperty = async (propertyData: Property) => {
+  try {
+    const response = await axios.post(`${BASE_URL}properties/`, propertyData, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error creating property:", error);
+    throw new Error("Failed to create property");
+  }
+};

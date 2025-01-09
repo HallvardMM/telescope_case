@@ -8,7 +8,8 @@ import { useState } from "react";
 import MapIcon from "~/components/icons/map";
 import { PropertyMap } from "./propertyMap.client";
 import { PropertyList } from "./propertyList";
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
+import { Button } from "~/components/ui/button";
 
 // Register Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -52,6 +53,11 @@ export default function PortfolioPage() {
           checked={showAsMap}
           onCheckedChange={() => setShowAsMap(!showAsMap)}
         />
+        <Button asChild>
+        <Link to={`create-property`}>
+            Create property
+        </Link>
+        </Button>
       </div>
       {showAsMap ? (
         <PropertyMap properties={filteredProperties} />
