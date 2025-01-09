@@ -8,7 +8,7 @@ import { useState } from "react";
 import MapIcon from "~/components/icons/map";
 import { PropertyMap } from "./propertyMap.client";
 import { PropertyList } from "./propertyList";
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData, useNavigate } from "@remix-run/react";
 import { Button } from "~/components/ui/button";
 
 // Register Chart.js components
@@ -17,11 +17,13 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 type LoaderData = {
   portfolio: Portfolio | null;
   filteredProperties: Property[];
+  userId: number;
 };
 
 export const loader = async ({ params }: LoaderArgs): Promise<LoaderData> => {
   invariant(params.id, "Portfolio ID is required");
-
+  invariant(params.userId, "User ID is required");
+  const userId = Number(params.userId);
   const portfolioId = Number(params.id);
   const [properties, portfolios] = await Promise.all([
     getProperties(),
@@ -34,16 +36,24 @@ export const loader = async ({ params }: LoaderArgs): Promise<LoaderData> => {
     (property) => property.portfolio === portfolioId,
   );
 
-  return { portfolio, filteredProperties };
+  return { portfolio, filteredProperties, userId };
 };
 
 export default function PortfolioPage() {
-  const { portfolio, filteredProperties } = useLoaderData<LoaderData>();
+  const { portfolio, filteredProperties, userId } = useLoaderData<LoaderData>();
   const [showAsMap, setShowAsMap] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="container mx-auto p-8">
+      <Button onClick={() => navigate(`/user/${userId}`)}>Back</Button>
       <h1 className="text-2xl font-bold mb-6">Portfolio: {portfolio?.name}</h1>
+      <Button
+        asChild
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      >
+        <Link to={`create-property`}>Create property</Link>
+      </Button>
       <h2 className="text-xl font-semibold mb-4">Properties</h2>
       <div className="flex mb-4">
         <MapIcon />
@@ -53,11 +63,6 @@ export default function PortfolioPage() {
           checked={showAsMap}
           onCheckedChange={() => setShowAsMap(!showAsMap)}
         />
-        <Button asChild>
-        <Link to={`create-property`}>
-            Create property
-        </Link>
-        </Button>
       </div>
       {showAsMap ? (
         <PropertyMap properties={filteredProperties} />

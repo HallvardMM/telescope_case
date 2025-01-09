@@ -1,8 +1,9 @@
-import { Link, useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData, useNavigate } from "@remix-run/react";
 import { getPortfolios } from "~/utils/api";
 import { Portfolio } from "~/types/portfolio";
 import invariant from "tiny-invariant";
 import { LoaderFunctionArgs } from "@remix-run/node";
+import { Button } from "~/components/ui/button";
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   invariant(params.id, "Missing user ID");
@@ -16,14 +17,17 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
 export default function PortfoliosPage() {
   const portfolios = useLoaderData<Portfolio[]>();
 
+  const navigate = useNavigate();
+
   return (
     <div className="container mx-auto p-8">
+      <Button onClick={() => navigate("/")}>Back</Button>
       <h1 className="text-2xl font-bold mb-6">Portfolios</h1>
       <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {portfolios.map((portfolio) => (
           <li key={portfolio.id}>
             <Link
-              to={`/portfolio/${portfolio.id}`}
+              to={`portfolio/${portfolio.id}`}
               className="block border p-4 rounded-lg shadow hover:shadow-lg hover:bg-gray-100 transition"
             >
               <h2 className="text-lg font-bold">{portfolio.name}</h2>

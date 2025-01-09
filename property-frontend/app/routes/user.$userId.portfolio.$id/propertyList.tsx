@@ -35,8 +35,7 @@ export const PropertyList = ({ filteredProperties }: PropertyListProps) => {
               <div>
                 <h3 className="text-lg font-bold">{property.name}</h3>
                 <p className="text-gray-600">
-                  Total Financial Risk:{" "}
-                  {property.total_financial_risk} NOK
+                  Total Financial Risk: {property.total_financial_risk} NOK
                 </p>
                 <p className="text-gray-600">
                   Risks: {property.handled_risks}/{property.relevant_risks}

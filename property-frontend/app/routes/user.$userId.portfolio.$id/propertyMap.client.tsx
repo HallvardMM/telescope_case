@@ -34,9 +34,7 @@ export const PropertyMap = ({ properties }: PropertyMapProps) => {
               Risks: {property.handled_risks}/{property.relevant_risks}
             </p>
             <Button asChild>
-            <Link to={`property/${property.id}`}>
-                See building
-            </Link>
+              <Link to={`property/${property.id}`}>See building</Link>
             </Button>
           </Popup>
         </Marker>

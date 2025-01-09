@@ -40,7 +40,7 @@ export default function LoginPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="mt-1 block w-full p-2 border rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+              className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring focus:ring-blue-300 bg-white text-black"
               placeholder="Enter your username"
               required
             />
